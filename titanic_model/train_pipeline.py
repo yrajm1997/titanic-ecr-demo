@@ -43,4 +43,20 @@ def run_training() -> None:
     # printing the score
     
 if __name__ == "__main__":
+    
+    import mlflow
+    import os
+    # from getpass import getpass
+    # os.environ['MLFLOW_TRACKING_USERNAME'] = 'yrajm1997'
+    # os.environ['MLFLOW_TRACKING_PASSWORD'] = getpass("Enter your DagsHub access token: ")
+    mlflow.set_tracking_uri("http://43.204.236.72:5000/")
+    mlflow.set_experiment("Titanic Survival Prediction")
+    mlflow.sklearn.autolog()
+    #mlflow.autolog()
+
+    mlflow.start_run(run_name = os.environ['GIT_COMMIT_MSG'])
+    
+    # your training code goes here
     run_training()
+    
+    mlflow.end_run()
