@@ -111,6 +111,7 @@ jobs:
 
 
   deploy:
+    needs: [train, test, build]
     name: Deploy
     runs-on: ubuntu-latest
     environment: production
