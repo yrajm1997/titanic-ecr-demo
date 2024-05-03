@@ -57,6 +57,8 @@ jobs:
     - name: Install dependencies
       run: pip install -r requirements/requirements.txt
     - name: Train and save pipeline
+      env:
+        GIT_COMMIT_MSG: ${{ github.event.head_commit.message }}
       run: python titanic_model/train_pipeline.py
     - uses: actions/upload-artifact@v2
       with:
